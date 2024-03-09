@@ -6,7 +6,7 @@ import { ThemeToggle } from "./ThemeToggle";
 
 const Navbar = () => {
     return (
-        <nav className="flex px-10 py-2 shadow-md justify-between">
+        <nav className="flex px-10 py-2 justify-between">
             <Link href="/">
                 <div className="flex items-center space-x-2 group">
                     <Image
@@ -16,13 +16,13 @@ const Navbar = () => {
                         height={40}
                     />
                     <h1 className="font-extrabold text-3xl tracking-tighter transition ease-in-out duration-300 group-hover:text-primary">
-                        Ticketify
+                        {process.env.NEXT_PUBLIC_APP_NAME}
                     </h1>
                 </div>
             </Link>
 
             <div className="flex space-x-2">
-                <Link href="/login">
+                <Link href="/register">
                     <Button variant="outline">
                         <span>Create Account</span>
                     </Button>

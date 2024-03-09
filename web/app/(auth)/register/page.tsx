@@ -1,20 +1,20 @@
 import { Metadata } from "next";
-import LoginForm from "./_components/LoginForm";
+import RegisterForm from "./_components/RegisterForm";
 
 export const metadata: Metadata = {
-    title: "Login",
-    description: "Sign In to your Ticketify account.",
+    title: "Create Account",
+    description: "Create a new Ticketify account.",
 };
 
-const LoginPage = () => {
+const RegisterPage = () => {
     return (
         <main className="flex max-w-7xl w-full m-auto">
             <div className="w-1/2 hidden lg:block"></div>
             <div className="flex items-center justify-center lg:w-1/2">
-                <LoginForm />
+                <RegisterForm />
             </div>
         </main>
     );
 };
 
-export default LoginPage;
+export default RegisterPage;

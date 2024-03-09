@@ -4,14 +4,16 @@ const Footer = () => {
     return (
         <footer className="flex px-20 py-5 text-muted-foreground text-sm">
             <span className="mr-2">
-                Ticketify &copy; {new Date().getFullYear()}
+                {process.env.NEXT_PUBLIC_APP_NAME} &copy;{" "}
+                {new Date().getFullYear()}
             </span>
             {" | "}
             <span className="ml-2">
-                Made by{" "}
+                Built by{" "}
                 <Link
                     href="https://pratikstemkar.in"
                     target="_blank"
+                    className="underline underline-offset-4"
                 >
                     Pratik
                 </Link>
@@ -19,6 +21,7 @@ const Footer = () => {
                 <Link
                     href="https://github.com/pratikstemkar/ticketify"
                     target="_blank"
+                    className="underline underline-offset-4"
                 >
                     GitHub
                 </Link>
