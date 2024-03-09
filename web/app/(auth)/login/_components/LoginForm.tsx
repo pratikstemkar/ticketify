@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
     email: z.string().min(3).max(50).email(),
@@ -27,6 +28,8 @@ const formSchema = z.object({
 });
 
 const LoginForm = () => {
+    const router = useRouter();
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -37,6 +40,7 @@ const LoginForm = () => {
 
     const onSubmit = (values: z.infer<typeof formSchema>) => {
         console.log(values);
+        router.replace("/explore");
     };
 
     return (
