@@ -50,7 +50,7 @@ export function ExploreCarousel() {
             <CarouselContent>
                 {data.map((movie, index) => (
                     <CarouselItem key={index}>
-                        <div className="relative aspect-[200/60] h-32 lg:h-96 w-full">
+                        <div className="relative aspect-[200/60] h-32 lg:h-96 w-full hover:cursor-pointer">
                             <Image
                                 src={`/movies/${movie.img}`}
                                 alt=""
