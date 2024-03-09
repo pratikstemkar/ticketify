@@ -3,10 +3,11 @@ import { LogInIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
+import MobNav from "./MobNav";
 
 const Navbar = () => {
     return (
-        <nav className="flex px-10 py-2 justify-between">
+        <nav className="flex px-4 lg:px-10 py-2 justify-between">
             <Link href="/">
                 <div className="flex items-center space-x-2 group">
                     <Image
@@ -21,7 +22,7 @@ const Navbar = () => {
                 </div>
             </Link>
 
-            <div className="flex space-x-2">
+            <div className="space-x-2 hidden lg:inline-block">
                 <Link href="/register">
                     <Button variant="outline">
                         <span>Create Account</span>
@@ -35,6 +36,7 @@ const Navbar = () => {
                 </Link>
                 <ThemeToggle />
             </div>
+            <MobNav />
         </nav>
     );
 };

@@ -2,13 +2,12 @@ import Link from "next/link";
 
 const Footer = () => {
     return (
-        <footer className="flex px-20 py-5 text-muted-foreground text-sm">
-            <span className="mr-2">
+        <footer className="flex lg:flex-row px-4 lg:px-20 py-5 text-muted-foreground text-sm">
+            <span className="hidden lg:block">
                 {process.env.NEXT_PUBLIC_APP_NAME} &copy;{" "}
-                {new Date().getFullYear()}
+                {new Date().getFullYear()} |
             </span>
-            {" | "}
-            <span className="ml-2">
+            <span className="lg:ml-1.5">
                 Built by{" "}
                 <Link
                     href="https://pratikstemkar.in"

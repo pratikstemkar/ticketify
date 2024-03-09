@@ -50,7 +50,7 @@ const RegisterForm = () => {
         <Form {...form}>
             <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-4 flex flex-col w-1/2"
+                className="space-y-4 flex flex-col lg:w-1/2"
             >
                 <div>
                     <h1 className="text-xl font-bold">Create an Account</h1>
