@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 const RegisterPage = () => {
     return (
-        <main className="flex max-w-7xl w-full m-auto">
+        <main className="flex max-w-7xl w-full m-auto px-10 lg:px-0">
             <div className="lg:w-1/2 hidden lg:block"></div>
             <div className="flex items-center justify-center w-full lg:w-1/2">
                 <RegisterForm />

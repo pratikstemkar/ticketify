@@ -18,7 +18,13 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
-    email: z.string().min(3).max(50).email(),
+    email: z
+        .string()
+        .min(4, {
+            message: "Email must be atleast 4 characters",
+        })
+        .max(50)
+        .email(),
     password: z
         .string()
         .min(4, {

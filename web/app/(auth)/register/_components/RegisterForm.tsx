@@ -17,13 +17,25 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 
 const formSchema = z.object({
-    username: z
+    firstName: z
         .string()
         .min(3, {
-            message: "Username must be atleast 3 characters",
+            message: "First Name must be atleast 3 characters",
         })
         .max(32),
-    email: z.string().min(3).max(50).email(),
+    lastName: z
+        .string()
+        .min(3, {
+            message: "Last Name must be atleast 3 characters",
+        })
+        .max(32),
+    email: z
+        .string()
+        .min(4, {
+            message: "Email must be atleast 4 characters",
+        })
+        .max(50)
+        .email(),
     password: z
         .string()
         .min(4, {
@@ -36,7 +48,8 @@ const RegisterForm = () => {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            username: "",
+            firstName: "",
+            lastName: "",
             email: "",
             password: "",
         },
@@ -58,25 +71,40 @@ const RegisterForm = () => {
                         Enter your credentials to create a new account.
                     </h4>
                 </div>
-                <FormField
-                    control={form.control}
-                    name="username"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Username</FormLabel>
-                            <FormControl>
-                                <Input
-                                    placeholder="username"
-                                    {...field}
-                                />
-                            </FormControl>
-                            <FormDescription>
-                                Unique username is your public name.
-                            </FormDescription>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
+                <div className="flex space-x-2">
+                    <FormField
+                        control={form.control}
+                        name="firstName"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>First Name</FormLabel>
+                                <FormControl>
+                                    <Input
+                                        placeholder="First Name"
+                                        {...field}
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="lastName"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Last Name</FormLabel>
+                                <FormControl>
+                                    <Input
+                                        placeholder="Last Name"
+                                        {...field}
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                </div>
                 <FormField
                     control={form.control}
                     name="email"
@@ -89,7 +117,7 @@ const RegisterForm = () => {
                                     {...field}
                                 />
                             </FormControl>
-                            <FormDescription>
+                            <FormDescription className="text-xs">
                                 We do not share your email with anyone.
                             </FormDescription>
                             <FormMessage />
