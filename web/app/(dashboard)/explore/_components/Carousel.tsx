@@ -1,6 +1,6 @@
 "use client";
 
-import { movies } from "@/app/data/movies";
+import { movies } from "@/data/movies";
 import {
     Carousel,
     CarouselContent,

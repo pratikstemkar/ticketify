@@ -3,7 +3,7 @@ import MovieCard from "../../_components/Card";
 import { ShareIcon, ThumbsUpIcon } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from "next/image";
-import { findMovieByUrl } from "@/app/data/movies";
+import { findMovieByUrl } from "@/data/movies";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { Skeleton } from "@/components/ui/skeleton";

@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { ExploreCarousel } from "./_components/Carousel";
 import MovieCard from "./_components/Card";
-import { movies } from "@/app/data/movies";
+import { movies } from "@/data/movies";
 import Link from "next/link";
 
 export const metadata: Metadata = {

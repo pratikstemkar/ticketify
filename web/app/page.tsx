@@ -4,6 +4,8 @@ import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 
 const words = `Catch your favorite shows, movies, and events hassle-free with Ticketify – where ticketing is made simple.  Skip the lines and book your tickets effortlessly with us. Elevate your entertainment experience today.`;
 
+export const dynamic = "force-dynamic";
+
 export default function Home() {
     return (
         <main className="flex max-w-7xl m-auto">
