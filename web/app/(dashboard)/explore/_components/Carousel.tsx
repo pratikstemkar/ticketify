@@ -32,9 +32,9 @@ export function ExploreCarousel() {
                             <Image
                                 src={`/movies/${movie.imgL}`}
                                 alt={movie.title}
-                                width={800}
-                                height={800}
-                                className="rounded-md w-full hover:cursor-pointer"
+                                width={1280}
+                                height={720}
+                                className="rounded-md hover:cursor-pointer"
                             />
                         </Link>
                     </CarouselItem>
