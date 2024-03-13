@@ -1,12 +1,21 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
-import { LogInIcon } from "lucide-react";
+import { BellIcon, LogInIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
 import MobNav from "./MobNav";
 import { APP_NAME } from "@/constants";
+import { useAuth } from "@/lib/hooks/useAuth";
+import { useAppDispatch } from "@/lib/hooks";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import UserNav from "./UserNav";
 
 const Navbar = () => {
+    const auth = useAuth();
+    const dispatch = useAppDispatch();
+
     return (
         <nav className="flex px-4 lg:px-10 py-2 justify-between">
             <Link href="/explore">
@@ -23,21 +32,47 @@ const Navbar = () => {
                 </div>
             </Link>
 
-            <div className="space-x-2 hidden lg:inline-block">
-                <Link href="/register">
-                    <Button variant="outline">
-                        <span>Create Account</span>
-                    </Button>
-                </Link>
-                <Link href="/login">
-                    <Button>
-                        <LogInIcon className="h-4 w-4 mr-2" />
-                        <span>Login</span>
-                    </Button>
-                </Link>
-                <ThemeToggle />
+            <div className="inline-flex space-x-2">
+                {auth.user ? (
+                    <>
+                        <Button
+                            variant="ghost"
+                            size="icon"
+                        >
+                            <BellIcon className="h-[1.2rem] w-[1.2rem]" />
+                        </Button>
+                        <UserNav {...auth.user} />
+                    </>
+                ) : (
+                    <>
+                        <MobNav />
+                    </>
+                )}
+                <div className="space-x-2 hidden lg:inline-flex ml-2 ">
+                    {!auth.user && (
+                        <>
+                            <Button
+                                variant="outline"
+                                asChild
+                            >
+                                <Link href="/register">
+                                    <span>Create Account</span>{" "}
+                                </Link>
+                            </Button>
+                            <Button
+                                variant="default"
+                                asChild
+                            >
+                                <Link href="/login">
+                                    <LogInIcon className="h-4 w-4 mr-2" />
+                                    <span>Login</span>{" "}
+                                </Link>
+                            </Button>
+                        </>
+                    )}
+                    <ThemeToggle />
+                </div>
             </div>
-            <MobNav />
         </nav>
     );
 };

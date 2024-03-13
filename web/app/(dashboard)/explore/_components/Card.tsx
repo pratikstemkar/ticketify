@@ -7,6 +7,7 @@ const MovieCard = (props: { title: string; img: string }) => {
                 src={`/movies/${props.img}`}
                 alt={props.title}
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="object-cover rounded-lg"
             />
         </div>

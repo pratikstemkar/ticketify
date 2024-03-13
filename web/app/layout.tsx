@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./_components/Navbar";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import Footer from "./_components/Footer";
+import StoreProvider from "./_components/StoreProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,9 +32,11 @@ export default function RootLayout({
                     enableSystem
                     disableTransitionOnChange
                 >
-                    <Navbar />
-                    {children}
-                    <Footer />
+                    <StoreProvider>
+                        <Navbar />
+                        {children}
+                        <Footer />
+                    </StoreProvider>
                 </ThemeProvider>
             </body>
         </html>

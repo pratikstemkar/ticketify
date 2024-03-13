@@ -17,6 +17,8 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { APP_NAME } from "@/constants";
+import { useAppDispatch } from "@/lib/hooks";
+import { setCredentials } from "@/lib/features/authSlice";
 
 const formSchema = z.object({
     email: z
@@ -36,6 +38,7 @@ const formSchema = z.object({
 
 const LoginForm = () => {
     const router = useRouter();
+    const dispatch = useAppDispatch();
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -47,6 +50,17 @@ const LoginForm = () => {
 
     const onSubmit = (values: z.infer<typeof formSchema>) => {
         console.log(values);
+        dispatch(
+            setCredentials({
+                user: {
+                    id: 1,
+                    firstName: "Pratik",
+                    lastName: "Temkar",
+                    email: "pratikstemkar@gmail.com",
+                },
+                access_token: "ahgsdhadsuytasdhj",
+            })
+        );
         router.replace("/explore");
     };
 
