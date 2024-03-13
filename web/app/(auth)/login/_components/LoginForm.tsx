@@ -16,6 +16,7 @@ import {
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { APP_NAME } from "@/constants";
 
 const formSchema = z.object({
     email: z
@@ -56,9 +57,7 @@ const LoginForm = () => {
                 className="space-y-4 flex flex-col lg:w-1/2"
             >
                 <div>
-                    <h1 className="text-xl font-bold">
-                        Welcome to {process.env.NEXT_PUBLIC_APP_NAME}
-                    </h1>
+                    <h1 className="text-xl font-bold">Welcome to {APP_NAME}</h1>
                     <h4 className="text-sm text-muted-foreground">
                         Enter your credentials to Sign In to your account.
                     </h4>

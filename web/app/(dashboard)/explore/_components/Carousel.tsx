@@ -1,5 +1,6 @@
 "use client";
 
+import { movies } from "@/app/data/movies";
 import {
     Carousel,
     CarouselContent,
@@ -9,33 +10,7 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
-
-const data = [
-    {
-        title: "Manorama: Six Feet Under",
-        img: "manorama.jpg",
-    },
-    {
-        title: "Bridge of Spies",
-        img: "spies.jpg",
-    },
-    {
-        title: "Gangs of Wasseypur",
-        img: "gangs.avif",
-    },
-    {
-        title: "Swades",
-        img: "swades.avif",
-    },
-    {
-        title: "Talvar",
-        img: "talvar.jpg",
-    },
-    {
-        title: "Parasite",
-        img: "parasite.jpeg",
-    },
-];
+import Link from "next/link";
 
 export function ExploreCarousel() {
     return (
@@ -48,16 +23,20 @@ export function ExploreCarousel() {
             ]}
         >
             <CarouselContent>
-                {data.map((movie, index) => (
-                    <CarouselItem key={index}>
-                        <div className="relative aspect-[200/60] h-32 lg:h-96 w-full hover:cursor-pointer">
+                {movies.map((movie, index) => (
+                    <CarouselItem
+                        key={index}
+                        className="basis-1/2 lg:basis-1/3"
+                    >
+                        <Link href={`/explore/movies/${movie.url}`}>
                             <Image
-                                src={`/movies/${movie.img}`}
-                                alt=""
-                                fill
-                                className="object-cover rounded-lg"
+                                src={`/movies/${movie.imgL}`}
+                                alt={movie.title}
+                                width={800}
+                                height={800}
+                                className="rounded-md w-full hover:cursor-pointer"
                             />
-                        </div>
+                        </Link>
                     </CarouselItem>
                 ))}
             </CarouselContent>

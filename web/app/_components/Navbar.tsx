@@ -4,11 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
 import MobNav from "./MobNav";
+import { APP_NAME } from "@/constants";
 
 const Navbar = () => {
     return (
         <nav className="flex px-4 lg:px-10 py-2 justify-between">
-            <Link href="/">
+            <Link href="/explore">
                 <div className="flex items-center space-x-2 group">
                     <Image
                         src="/icon.png"
@@ -17,7 +18,7 @@ const Navbar = () => {
                         height={40}
                     />
                     <h1 className="font-extrabold text-3xl tracking-tighter transition ease-in-out duration-300 group-hover:text-primary">
-                        {process.env.NEXT_PUBLIC_APP_NAME}
+                        {APP_NAME}
                     </h1>
                 </div>
             </Link>
