@@ -5,6 +5,23 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from "next/image";
 import { findMovieByUrl } from "@/app/data/movies";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
+import type { Metadata, ResolvingMetadata } from "next";
+
+export async function generateMetadata({
+    params,
+}: {
+    params: { movieId: string };
+}): Promise<Metadata> {
+    const id = params.movieId;
+
+    const foundMovie = findMovieByUrl(params.movieId);
+
+    return {
+        title: foundMovie?.title,
+    };
+}
 
 const MoviePage = ({ params }: { params: { movieId: string } }) => {
     const foundMovie = findMovieByUrl(params.movieId);
@@ -15,15 +32,21 @@ const MoviePage = ({ params }: { params: { movieId: string } }) => {
     return (
         <main className="flex flex-col space-y-5 lg:space-y-10 max-w-7xl m-auto w-full min-h-screen px-4 lg:px-0">
             <div className="flex flex-col lg:flex-row items-center w-full mt-5 lg:mt-10">
-                <Image
-                    src={`/movies/${foundMovie.imgL}`}
-                    alt="hah"
-                    height={100}
-                    width={500}
-                    className="w-full rounded-lg mb-5 lg:hidden"
-                />
+                <Suspense
+                    fallback={
+                        <Skeleton className="w-full h-[100px] rounded-lg mb-5 lg:hidden" />
+                    }
+                >
+                    <Image
+                        src={`/movies/${foundMovie.imgL}`}
+                        alt="hah"
+                        height={100}
+                        width={500}
+                        className="w-full rounded-lg mb-5 lg:hidden"
+                    />
+                </Suspense>
                 <MovieCard
-                    title="Shaitan"
+                    title={foundMovie.title}
                     img={foundMovie.imgP}
                 />
                 <div className="flex flex-col space-y-4 w-full lg:ml-5">
@@ -53,7 +76,7 @@ const MoviePage = ({ params }: { params: { movieId: string } }) => {
                         <div className="flex space-x-2">
                             {foundMovie.languages.map((lang, index) => (
                                 <div
-                                    className="px-2 py-0.5 bg-slate-400 rounded-md text-sm"
+                                    className="px-2 py-0.5 bg-slate-300 dark:bg-slate-700 text-black dark:text-white rounded-md text-sm"
                                     key={index}
                                 >
                                     {lang}
@@ -78,14 +101,14 @@ const MoviePage = ({ params }: { params: { movieId: string } }) => {
                 <div className="flex space-x-5 mt-2">
                     {foundMovie.actors?.map((actor, index) => (
                         <div
-                            className="flex flex-col items-center justify-center space-y-2"
+                            className="flex flex-col items-center justify-center space-y-2 hover:cursor-pointer"
                             key={index}
                         >
-                            <Avatar className="h-32 w-32">
+                            <Avatar className="h-24 w-24 lg:h-32 lg:w-32">
                                 <AvatarImage src="https://github.com/pratikstemkar.png" />
                                 <AvatarFallback>CN</AvatarFallback>
                             </Avatar>
-                            <h4>{actor}</h4>
+                            <h4 className="text-sm">{actor}</h4>
                         </div>
                     ))}
                 </div>
@@ -93,12 +116,12 @@ const MoviePage = ({ params }: { params: { movieId: string } }) => {
             <div>
                 <h3 className="text-2xl font-bold">Director</h3>
                 <div className="flex space-x-5 mt-2">
-                    <div className="flex flex-col items-center justify-center space-y-2">
-                        <Avatar className="h-32 w-32">
+                    <div className="flex flex-col items-center justify-center space-y-2 hover:cursor-pointer">
+                        <Avatar className="h-24 w-24 lg:h-32 lg:w-32">
                             <AvatarImage src="https://github.com/pratikstemkar.png" />
                             <AvatarFallback>CN</AvatarFallback>
                         </Avatar>
-                        <h4>{foundMovie.director}</h4>
+                        <h4 className="text-sm">{foundMovie.director}</h4>
                     </div>
                 </div>
             </div>
