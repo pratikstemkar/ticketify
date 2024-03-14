@@ -1,6 +1,9 @@
 package com.pratikstemkar.ticketify.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.pratikstemkar.ticketify.dto.AuthenticationRequest;
+import com.pratikstemkar.ticketify.dto.AuthenticationResponse;
+import com.pratikstemkar.ticketify.dto.RegisterRequest;
 import com.pratikstemkar.ticketify.enums.Role;
 import com.pratikstemkar.ticketify.enums.TokenType;
 import com.pratikstemkar.ticketify.model.*;
