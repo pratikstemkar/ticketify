@@ -8,13 +8,11 @@ import { ThemeToggle } from "./ThemeToggle";
 import MobNav from "./MobNav";
 import { APP_NAME } from "@/constants";
 import { useAuth } from "@/lib/hooks/useAuth";
-import { useAppDispatch } from "@/lib/hooks";
 import UserNav from "./UserNav";
 import SearchBar from "./SearchBar";
 
 const Navbar = () => {
     const auth = useAuth();
-    const dispatch = useAppDispatch();
 
     return (
         <nav className="flex px-4 lg:px-10 py-2 justify-between items-center">
@@ -33,7 +31,7 @@ const Navbar = () => {
             </Link>
 
             <div className="flex flex-row-reverse space-x-2">
-                <div className="inline-flex space-x-2">
+                <div className="inline-flex space-x-2 ml-2">
                     {auth.user ? (
                         <>
                             <Button

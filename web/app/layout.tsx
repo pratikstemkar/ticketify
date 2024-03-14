@@ -13,7 +13,8 @@ export const metadata: Metadata = {
         template: "%s | Ticketify",
         default: "Ticketify - Ticketing Made Simple",
     },
-    description: "Event ticket booking and management.",
+    description:
+        "Ticket booking and management. Book tickets for movies, stand up comedy shows, cricket matches and many more.",
 };
 
 export default function RootLayout({
