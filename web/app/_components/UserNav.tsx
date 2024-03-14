@@ -11,6 +11,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { logout } from "@/lib/features/authSlice";
 import { useAppDispatch } from "@/lib/hooks";
+import {
+    CreditCardIcon,
+    LogOutIcon,
+    SettingsIcon,
+    UserIcon,
+} from "lucide-react";
+import { useRouter } from "next/navigation";
 
 type UserNavProps = {
     firstName: string;
@@ -20,6 +27,7 @@ type UserNavProps = {
 
 const UserNav = (props: UserNavProps) => {
     const dispatch = useAppDispatch();
+    const router = useRouter();
 
     return (
         <DropdownMenu>
@@ -54,14 +62,32 @@ const UserNav = (props: UserNavProps) => {
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
-                    <DropdownMenuItem className="hover:cursor-pointer">
-                        Profile
+                    <DropdownMenuItem
+                        className="hover:cursor-pointer"
+                        onClick={() => {
+                            router.push("/profile");
+                        }}
+                    >
+                        <UserIcon className="mr-2 w-4 h-4" />
+                        <span>Profile</span>
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="hover:cursor-pointer">
-                        Orders
+                    <DropdownMenuItem
+                        className="hover:cursor-pointer"
+                        onClick={() => {
+                            router.push("/profile/orders");
+                        }}
+                    >
+                        <CreditCardIcon className="mr-2 w-4 h-4" />
+                        <span>Orders</span>
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="hover:cursor-pointer">
-                        Settings
+                    <DropdownMenuItem
+                        className="hover:cursor-pointer"
+                        onClick={() => {
+                            router.push("/profile/settings");
+                        }}
+                    >
+                        <SettingsIcon className="mr-2 w-4 h-4" />
+                        <span>Settings</span>
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
@@ -69,7 +95,8 @@ const UserNav = (props: UserNavProps) => {
                     onClick={() => dispatch(logout())}
                     className="hover:cursor-pointer text-primary"
                 >
-                    Log out
+                    <LogOutIcon className="mr-2 w-4 h-4" />
+                    <span>Log out</span>
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
