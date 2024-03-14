@@ -9,15 +9,15 @@ import MobNav from "./MobNav";
 import { APP_NAME } from "@/constants";
 import { useAuth } from "@/lib/hooks/useAuth";
 import { useAppDispatch } from "@/lib/hooks";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import UserNav from "./UserNav";
+import SearchBar from "./SearchBar";
 
 const Navbar = () => {
     const auth = useAuth();
     const dispatch = useAppDispatch();
 
     return (
-        <nav className="flex px-4 lg:px-10 py-2 justify-between">
+        <nav className="flex px-4 lg:px-10 py-2 justify-between items-center">
             <Link href="/explore">
                 <div className="flex items-center space-x-2 group">
                     <Image
@@ -32,46 +32,49 @@ const Navbar = () => {
                 </div>
             </Link>
 
-            <div className="inline-flex space-x-2">
-                {auth.user ? (
-                    <>
-                        <Button
-                            variant="ghost"
-                            size="icon"
-                        >
-                            <BellIcon className="h-[1.2rem] w-[1.2rem]" />
-                        </Button>
-                        <UserNav {...auth.user} />
-                    </>
-                ) : (
-                    <>
-                        <MobNav />
-                    </>
-                )}
-                <div className="space-x-2 hidden lg:inline-flex ml-2 ">
-                    {!auth.user && (
+            <div className="flex flex-row-reverse space-x-2">
+                <div className="inline-flex space-x-2">
+                    {auth.user ? (
                         <>
                             <Button
-                                variant="outline"
-                                asChild
+                                variant="ghost"
+                                size="icon"
                             >
-                                <Link href="/register">
-                                    <span>Create Account</span>{" "}
-                                </Link>
+                                <BellIcon className="h-[1.2rem] w-[1.2rem]" />
                             </Button>
-                            <Button
-                                variant="default"
-                                asChild
-                            >
-                                <Link href="/login">
-                                    <LogInIcon className="h-4 w-4 mr-2" />
-                                    <span>Login</span>{" "}
-                                </Link>
-                            </Button>
+                            <UserNav {...auth.user} />
+                        </>
+                    ) : (
+                        <>
+                            <MobNav />
                         </>
                     )}
-                    <ThemeToggle />
+                    <div className="space-x-2 hidden lg:inline-flex ml-2 ">
+                        {!auth.user && (
+                            <>
+                                <Button
+                                    variant="outline"
+                                    asChild
+                                >
+                                    <Link href="/register">
+                                        <span>Create Account</span>{" "}
+                                    </Link>
+                                </Button>
+                                <Button
+                                    variant="default"
+                                    asChild
+                                >
+                                    <Link href="/login">
+                                        <LogInIcon className="h-4 w-4 mr-2" />
+                                        <span>Login</span>{" "}
+                                    </Link>
+                                </Button>
+                            </>
+                        )}
+                        <ThemeToggle />
+                    </div>
                 </div>
+                <SearchBar />
             </div>
         </nav>
     );

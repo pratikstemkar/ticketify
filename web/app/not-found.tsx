@@ -6,7 +6,7 @@ export default function NotFound() {
             <h2 className="text-2xl font-bold text-red-500">Not Found</h2>
             <p>Could not find requested resource</p>
             <Link
-                href="/"
+                href="/explore"
                 className="underline underline-offset-4"
             >
                 Return Home
