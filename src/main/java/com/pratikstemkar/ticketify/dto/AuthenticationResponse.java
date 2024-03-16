@@ -1,4 +1,4 @@
-package com.pratikstemkar.ticketify.model;
+package com.pratikstemkar.ticketify.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

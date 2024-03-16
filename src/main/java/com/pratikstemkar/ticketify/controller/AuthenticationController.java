@@ -1,8 +1,8 @@
 package com.pratikstemkar.ticketify.controller;
 
-import com.pratikstemkar.ticketify.model.AuthenticationRequest;
-import com.pratikstemkar.ticketify.model.AuthenticationResponse;
-import com.pratikstemkar.ticketify.model.RegisterRequest;
+import com.pratikstemkar.ticketify.dto.AuthenticationRequest;
+import com.pratikstemkar.ticketify.dto.AuthenticationResponse;
+import com.pratikstemkar.ticketify.dto.RegisterRequest;
 import com.pratikstemkar.ticketify.service.AuthenticationService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

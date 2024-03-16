@@ -1,14 +1,15 @@
 package com.pratikstemkar.ticketify.controller;
 
 import com.pratikstemkar.ticketify.dto.ChangePasswordRequest;
+import com.pratikstemkar.ticketify.dto.ProfileResponse;
 import com.pratikstemkar.ticketify.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.security.Principal;
 
 @RestController
@@ -24,5 +25,11 @@ public class UserController {
     ) {
         userService.changePassword(request, connectedUser);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping
+    public ResponseEntity<ProfileResponse> getProfile(HttpServletRequest request,
+                                                      HttpServletResponse response) throws IOException {
+        return ResponseEntity.ok(userService.getProfile(response, request));
     }
 }
