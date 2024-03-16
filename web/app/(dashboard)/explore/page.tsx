@@ -33,7 +33,7 @@ const Explore = () => {
                         className="p-5 hover:border hover:border-opacity-80 hover:cursor-pointer rounded-xl"
                     />
                 </Link>
-                <Link href="party">
+                <Link href="/explore/party">
                     <Image
                         src="/icons/party.png"
                         alt="iconssd"
