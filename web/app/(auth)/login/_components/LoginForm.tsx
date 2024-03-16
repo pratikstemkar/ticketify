@@ -19,6 +19,7 @@ import { useRouter } from "next/navigation";
 import { APP_NAME } from "@/constants";
 import { useAppDispatch } from "@/lib/hooks";
 import { setCredentials } from "@/lib/features/authSlice";
+import { toast } from "sonner";
 
 const formSchema = z.object({
     email: z
@@ -61,6 +62,9 @@ const LoginForm = () => {
                 access_token: "ahgsdhadsuytasdhj",
             })
         );
+        toast("Logged In!", {
+            description: "You have logged in to your Ticketify account.",
+        });
         router.replace("/explore");
     };
 

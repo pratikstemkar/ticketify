@@ -18,6 +18,7 @@ import {
     UserIcon,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 type UserNavProps = {
     firstName: string;
@@ -92,7 +93,13 @@ const UserNav = (props: UserNavProps) => {
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
-                    onClick={() => dispatch(logout())}
+                    onClick={() => {
+                        dispatch(logout());
+                        toast("Logged out!", {
+                            description:
+                                "You have been logged out from Ticketify.",
+                        });
+                    }}
                     className="hover:cursor-pointer text-primary"
                 >
                     <LogOutIcon className="mr-2 w-4 h-4" />

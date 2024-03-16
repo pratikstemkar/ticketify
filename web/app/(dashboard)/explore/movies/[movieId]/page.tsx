@@ -7,7 +7,8 @@ import { findMovieByUrl } from "@/data/movies";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
+import BookTicketButton from "../../_components/BookTicketButton";
 
 export async function generateMetadata({
     params,
@@ -89,7 +90,7 @@ const MoviePage = ({ params }: { params: { movieId: string } }) => {
                             <span>{foundMovie.rating}</span>
                         </div>
                     </div>
-                    <Button className="mt-5 lg:w-1/4">Book tickets</Button>
+                    <BookTicketButton />
                 </div>
             </div>
             <div>
