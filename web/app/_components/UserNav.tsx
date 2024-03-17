@@ -35,9 +35,9 @@ const UserNav = (props: UserNavProps) => {
             <DropdownMenuTrigger asChild>
                 <Button
                     variant="ghost"
-                    className="relative h-10 w-10 rounded-full"
+                    className="relative h-9 w-9 rounded-full"
                 >
-                    <Avatar>
+                    <Avatar className="h-9 w-9">
                         <AvatarImage
                             src="https://github.com/pratikstemkar.png"
                             alt={`${props.email}`}
@@ -69,7 +69,7 @@ const UserNav = (props: UserNavProps) => {
                             router.push("/profile");
                         }}
                     >
-                        <UserIcon className="mr-2 w-4 h-4" />
+                        <UserIcon className="mr-2 w-4 h-4 text-muted-foreground" />
                         <span>Profile</span>
                     </DropdownMenuItem>
                     <DropdownMenuItem
@@ -78,7 +78,7 @@ const UserNav = (props: UserNavProps) => {
                             router.push("/profile/orders");
                         }}
                     >
-                        <CreditCardIcon className="mr-2 w-4 h-4" />
+                        <CreditCardIcon className="mr-2 w-4 h-4 text-muted-foreground" />
                         <span>Orders</span>
                     </DropdownMenuItem>
                     <DropdownMenuItem
@@ -87,7 +87,7 @@ const UserNav = (props: UserNavProps) => {
                             router.push("/profile/settings");
                         }}
                     >
-                        <SettingsIcon className="mr-2 w-4 h-4" />
+                        <SettingsIcon className="mr-2 w-4 h-4 text-muted-foreground" />
                         <span>Settings</span>
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
@@ -100,9 +100,9 @@ const UserNav = (props: UserNavProps) => {
                                 "You have been logged out from Ticketify.",
                         });
                     }}
-                    className="hover:cursor-pointer text-primary"
+                    className="hover:cursor-pointer text-primary group"
                 >
-                    <LogOutIcon className="mr-2 w-4 h-4" />
+                    <LogOutIcon className="mr-2 w-4 h-4 group-hover:text-muted-foreground" />
                     <span>Log out</span>
                 </DropdownMenuItem>
             </DropdownMenuContent>

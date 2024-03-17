@@ -9,7 +9,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LogInIcon, MenuIcon } from "lucide-react";
+import { LogInIcon, MenuIcon, User2Icon } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 const MobNav = () => {
@@ -26,10 +26,11 @@ const MobNav = () => {
             </DropdownMenuTrigger>
             <DropdownMenuContent>
                 <DropdownMenuItem onClick={() => router.push("/register")}>
+                    <User2Icon className="h-4 w-4 mr-2 text-muted-foreground" />
                     Create Account
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => router.push("/login")}>
-                    <LogInIcon className="h-4 w-4 mr-2" />
+                    <LogInIcon className="h-4 w-4 mr-2 text-muted-foreground" />
                     Login
                 </DropdownMenuItem>
             </DropdownMenuContent>

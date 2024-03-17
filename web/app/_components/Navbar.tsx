@@ -30,8 +30,8 @@ const Navbar = () => {
                 </div>
             </Link>
 
-            <div className="flex flex-row-reverse space-x-2">
-                <div className="inline-flex space-x-2 ml-2">
+            <div className="flex flex-row-reverse justify-center items-center">
+                <div className="inline-flex space-x-2 ml-2 items-center">
                     {auth.user ? (
                         <>
                             <Button

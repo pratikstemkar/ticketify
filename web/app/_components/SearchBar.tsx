@@ -2,13 +2,10 @@
 
 import * as React from "react";
 import {
-    Calculator,
-    Calendar,
     ClapperboardIcon,
     CreditCard,
     SearchIcon,
     Settings,
-    Smile,
     User,
 } from "lucide-react";
 
@@ -24,7 +21,6 @@ import {
 } from "@/components/ui/command";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { movies } from "@/data/movies";
 
 export default function SearchBar() {
