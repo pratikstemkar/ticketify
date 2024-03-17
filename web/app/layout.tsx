@@ -26,6 +26,10 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
+            <meta
+                property="og:url"
+                content="https://ticketify.vercel.app/explore"
+            ></meta>
             <body
                 className={`${inter.className} flex flex-col justify-between min-h-screen`}
             >
