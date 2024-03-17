@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 const RegisterPage = () => {
     return (
-        <main className="flex flex-col lg:flex-row max-w-7xl w-full m-auto space-y-5 lg:space-y-0 lg:space-x-2 items-center">
+        <main className="flex flex-col lg:flex-row max-w-7xl w-full m-auto space-y-5 lg:space-y-0 lg:space-x-2 items-center mt-5 lg:mt-28">
             <div className="lg:w-2/3 px-2">
                 <Image
                     src="/illustrations/billus-2.webp"

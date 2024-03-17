@@ -40,10 +40,12 @@ export default function RootLayout({
                     disableTransitionOnChange
                 >
                     <StoreProvider>
-                        <Navbar />
-                        {children}
-                        <Footer />
+                        <div>
+                            <Navbar />
+                            {children}
+                        </div>
                         <Toaster />
+                        <Footer />
                     </StoreProvider>
                 </ThemeProvider>
             </body>

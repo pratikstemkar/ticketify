@@ -63,7 +63,7 @@ const UserNav = (props: UserNavProps) => {
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
-                    <DropdownMenuItem
+                    {/* <DropdownMenuItem
                         className="hover:cursor-pointer"
                         onClick={() => {
                             router.push("/profile");
@@ -71,20 +71,20 @@ const UserNav = (props: UserNavProps) => {
                     >
                         <UserIcon className="mr-2 w-4 h-4 text-muted-foreground" />
                         <span>Profile</span>
-                    </DropdownMenuItem>
+                    </DropdownMenuItem> */}
                     <DropdownMenuItem
                         className="hover:cursor-pointer"
                         onClick={() => {
-                            router.push("/profile/orders");
+                            router.push("/orders");
                         }}
                     >
                         <CreditCardIcon className="mr-2 w-4 h-4 text-muted-foreground" />
-                        <span>Orders</span>
+                        <span>My Orders</span>
                     </DropdownMenuItem>
                     <DropdownMenuItem
                         className="hover:cursor-pointer"
                         onClick={() => {
-                            router.push("/profile/settings");
+                            router.push("/settings");
                         }}
                     >
                         <SettingsIcon className="mr-2 w-4 h-4 text-muted-foreground" />
