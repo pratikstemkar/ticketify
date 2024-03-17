@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 
 export default function Home() {
     return (
-        <main className="flex max-w-7xl m-auto">
+        <main className="flex max-w-7xl m-auto w-full mt-24 lg:mt-60">
             <div className="flex flex-col space-y-5 w-full items-center justify-center max-w-4xl m-auto">
                 <Spotlight
                     className="-top-40 left-0 md:left-60 md:-top-20 hidden lg:block"

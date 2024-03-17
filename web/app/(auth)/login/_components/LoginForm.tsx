@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -51,21 +50,42 @@ const LoginForm = () => {
 
     const onSubmit = (values: z.infer<typeof formSchema>) => {
         console.log(values);
-        dispatch(
-            setCredentials({
-                user: {
-                    id: 1,
-                    firstName: "Pratik",
-                    lastName: "Temkar",
-                    email: "pratikstemkar@gmail.com",
-                },
-                access_token: "ahgsdhadsuytasdhj",
+
+        fetch("http://localhost:8080/api/v1/auth/authenticate", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: values!,
+        })
+            .then(res => {
+                res.json();
+                dispatch(
+                    setCredentials({
+                        user: {
+                            id: 1,
+                            firstName: "Pratik",
+                            lastName: "Temkar",
+                            email: "pratikstemkar@gmail.com",
+                        },
+                        access_token: "ahgsdhadsuytasdhj",
+                    })
+                );
+                toast("Logged In!", {
+                    description:
+                        "You have logged in to your Ticketify account.",
+                });
+                router.replace("/explore");
             })
-        );
-        toast("Logged In!", {
-            description: "You have logged in to your Ticketify account.",
-        });
-        router.replace("/explore");
+            .then(data => {
+                console.log(data);
+            })
+            .catch(err => {
+                console.log(err);
+                toast("Log In Failed!", {
+                    description: "Please check your credentials and try again.",
+                });
+            });
     };
 
     return (
