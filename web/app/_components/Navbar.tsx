@@ -10,6 +10,8 @@ import { APP_NAME } from "@/constants";
 import { useAuth } from "@/lib/hooks/useAuth";
 import UserNav from "./UserNav";
 import SearchBar from "./SearchBar";
+import { useEffect } from "react";
+import { toast } from "sonner";
 
 const Navbar = () => {
     const auth = useAuth();

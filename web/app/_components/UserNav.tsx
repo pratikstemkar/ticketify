@@ -24,6 +24,8 @@ type UserNavProps = {
     firstName: string;
     lastName: string;
     email: string;
+    avatar: string;
+    role: string;
 };
 
 const UserNav = (props: UserNavProps) => {
@@ -39,7 +41,10 @@ const UserNav = (props: UserNavProps) => {
                 >
                     <Avatar className="h-9 w-9">
                         <AvatarImage
-                            src="https://github.com/pratikstemkar.png"
+                            src={
+                                props.avatar ||
+                                "https://github.com/pratikstemkar.png"
+                            }
                             alt={`${props.email}`}
                         />
                         <AvatarFallback>SC</AvatarFallback>
