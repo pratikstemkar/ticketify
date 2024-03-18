@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProfileResponse {
-    @JsonProperty("first_name")
+    @JsonProperty("firstName")
     private String firstName;
 
     @JsonProperty("lastName")

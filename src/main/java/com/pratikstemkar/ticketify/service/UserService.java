@@ -1,7 +1,5 @@
 package com.pratikstemkar.ticketify.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pratikstemkar.ticketify.dto.AuthenticationResponse;
 import com.pratikstemkar.ticketify.dto.ChangePasswordRequest;
 import com.pratikstemkar.ticketify.dto.ProfileResponse;
 import com.pratikstemkar.ticketify.model.User;
@@ -37,7 +35,7 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public ProfileResponse getProfile(HttpServletResponse response, HttpServletRequest request) throws IOException {
+    public ProfileResponse getProfile(HttpServletRequest request, HttpServletResponse response) throws IOException {
         final String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
         final String userEmail;
         final String access_token;

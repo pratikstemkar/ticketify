@@ -31,6 +31,6 @@ public class UserController {
     @GetMapping
     public ResponseEntity<ProfileResponse> getProfile(HttpServletRequest request,
                                                       HttpServletResponse response) throws IOException {
-        return ResponseEntity.ok(userService.getProfile(response, request));
+        return ResponseEntity.ok(userService.getProfile(request, response));
     }
 }
