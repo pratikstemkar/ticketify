@@ -14,11 +14,13 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { APP_NAME } from "@/constants";
 import { useAppDispatch } from "@/lib/hooks";
 import { setCredentials } from "@/lib/features/authSlice";
 import { toast } from "sonner";
+import { getProfile } from "@/lib/requests/user";
+import { useAuth } from "@/lib/hooks/useAuth";
 
 const formSchema = z.object({
     email: z
@@ -39,6 +41,11 @@ const formSchema = z.object({
 const LoginForm = () => {
     const router = useRouter();
     const dispatch = useAppDispatch();
+    const auth = useAuth();
+
+    if (auth.user) {
+        redirect("/explore");
+    }
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -71,25 +78,7 @@ const LoginForm = () => {
             console.log(data);
 
             try {
-                const myHeaders = new Headers();
-                myHeaders.append(
-                    "Authorization",
-                    `Bearer ${data.access_token}`
-                );
-                const profileResponse = await fetch(
-                    "http://localhost:8080/api/v1/users",
-                    {
-                        method: "GET",
-                        headers: myHeaders,
-                        redirect: "follow",
-                    }
-                );
-                if (!profileResponse.ok) {
-                    throw new Error("Failed to authenticate token");
-                }
-
-                const profileData = await profileResponse.json();
-                console.log(profileData);
+                const profileData = await getProfile(data.access_token);
 
                 dispatch(
                     setCredentials({
@@ -106,7 +95,7 @@ const LoginForm = () => {
                         "Your have logged into your Ticketify account.",
                 });
 
-                router.replace("/explore");
+                // router.replace("/explore");
             } catch (error: any) {
                 console.error("Error: ", error.message);
                 toast(error.message, {

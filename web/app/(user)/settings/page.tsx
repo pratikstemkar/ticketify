@@ -1,7 +1,17 @@
+"use client";
+
 import { Separator } from "@/components/ui/separator";
 import { ProfileForm } from "../_components/ProfileForm";
+import { useAuth } from "@/lib/hooks/useAuth";
+import { redirect } from "next/navigation";
 
 const ProfilePage = () => {
+    const auth = useAuth();
+
+    if (!auth.user) {
+        redirect("/login");
+    }
+
     return (
         <div className="space-y-6">
             <div>

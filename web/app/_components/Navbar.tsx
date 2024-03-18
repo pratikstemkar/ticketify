@@ -10,11 +10,36 @@ import { APP_NAME } from "@/constants";
 import { useAuth } from "@/lib/hooks/useAuth";
 import UserNav from "./UserNav";
 import SearchBar from "./SearchBar";
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { toast } from "sonner";
+import { useAppDispatch } from "@/lib/hooks";
+import { User, logout, setCredentials } from "@/lib/features/authSlice";
 
 const Navbar = () => {
     const auth = useAuth();
+    const dispatch = useAppDispatch();
+
+    useLayoutEffect(() => {
+        if (
+            localStorage.getItem("user") &&
+            localStorage.getItem("access_token") &&
+            localStorage.getItem("refresh_token")
+        ) {
+            dispatch(
+                setCredentials({
+                    user: JSON.parse(localStorage.getItem("user")!),
+                    access_token: localStorage.getItem("access_token"),
+                    refresh_token: localStorage.getItem("refresh_token"),
+                })
+            );
+        } else {
+            console.log("token not found");
+            dispatch(logout());
+            toast("Logged out!", {
+                description: "Valid Token not found.",
+            });
+        }
+    }, []);
 
     return (
         <nav className="flex px-4 lg:px-10 py-2 justify-between items-center">

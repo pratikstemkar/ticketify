@@ -16,9 +16,10 @@ import {
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { useAppDispatch } from "@/lib/hooks";
 import { setCredentials } from "@/lib/features/authSlice";
+import { useAuth } from "@/lib/hooks/useAuth";
 
 const formSchema = z.object({
     firstName: z
@@ -51,6 +52,11 @@ const formSchema = z.object({
 const RegisterForm = () => {
     const router = useRouter();
     const dispatch = useAppDispatch();
+    const auth = useAuth();
+
+    if (auth.user) {
+        redirect("/explore");
+    }
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -120,7 +126,7 @@ const RegisterForm = () => {
                         "Your have logged into your Ticketify account.",
                 });
 
-                router.replace("/explore");
+                // router.replace("/explore");
             } catch (error: any) {
                 console.error("Error: ", error.message);
                 toast(error.message, {

@@ -27,6 +27,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { useAuth } from "@/lib/hooks/useAuth";
 
 const profileFormSchema = z.object({
     firstName: z
@@ -55,10 +56,16 @@ const profileFormSchema = z.object({
 
 type ProfileFormValues = z.infer<typeof profileFormSchema>;
 
-// This can come from your database or API.
-const defaultValues: Partial<ProfileFormValues> = {};
-
 export function ProfileForm() {
+    const auth = useAuth();
+
+    const defaultValues: Partial<ProfileFormValues> = {
+        firstName: auth.user?.firstName,
+        lastName: auth.user?.lastName,
+        avatar: auth.user?.avatar,
+        email: auth.user?.email,
+    };
+
     const form = useForm<ProfileFormValues>({
         resolver: zodResolver(profileFormSchema),
         defaultValues,
@@ -146,6 +153,7 @@ export function ProfileForm() {
                                 <Input
                                     placeholder="me@example.com"
                                     {...field}
+                                    disabled
                                 />
                             </FormControl>
                             <FormDescription>

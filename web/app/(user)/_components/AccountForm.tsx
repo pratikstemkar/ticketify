@@ -32,18 +32,7 @@ import {
 } from "@/components/ui/popover";
 import { toast } from "sonner";
 import { CalendarDaysIcon, CheckIcon } from "lucide-react";
-
-const languages = [
-    { label: "English", value: "en" },
-    { label: "French", value: "fr" },
-    { label: "German", value: "de" },
-    { label: "Spanish", value: "es" },
-    { label: "Portuguese", value: "pt" },
-    { label: "Russian", value: "ru" },
-    { label: "Japanese", value: "ja" },
-    { label: "Korean", value: "ko" },
-    { label: "Chinese", value: "zh" },
-] as const;
+import { changePassword } from "@/lib/requests/user";
 
 const accountFormSchema = z
     .object({
@@ -65,7 +54,7 @@ const accountFormSchema = z
                 message:
                     "Current Password must not be longer than 30 characters.",
             }),
-        confirmNewPassword: z
+        confirmationPassword: z
             .string()
             .min(6, {
                 message: "Current Password must be at least 6 characters.",
@@ -75,12 +64,12 @@ const accountFormSchema = z
                     "Current Password must not be longer than 30 characters.",
             }),
     })
-    .refine(data => data.newPassword === data.confirmNewPassword, {
+    .refine(data => data.newPassword === data.confirmationPassword, {
         message: "Passwords do not match.",
-        path: ["confirmNewPassword"],
+        path: ["confirmationPassword"],
     });
 
-type AccountFormValues = z.infer<typeof accountFormSchema>;
+export type AccountFormValues = z.infer<typeof accountFormSchema>;
 
 // This can come from your database or API.
 const defaultValues: Partial<AccountFormValues> = {
@@ -94,14 +83,10 @@ export function AccountForm() {
         defaultValues,
     });
 
-    function onSubmit(data: AccountFormValues) {
-        toast("Event has been created", {
-            description: "Sunday, December 03, 2023 at 9:00 AM",
-            action: {
-                label: "Undo",
-                onClick: () => console.log("Undo"),
-            },
-        });
+    async function onSubmit(values: AccountFormValues) {
+        console.log(values);
+
+        await changePassword(values);
     }
 
     return (
@@ -150,7 +135,7 @@ export function AccountForm() {
                 />
                 <FormField
                     control={form.control}
-                    name="confirmNewPassword"
+                    name="confirmationPassword"
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel>Confirm Password</FormLabel>
