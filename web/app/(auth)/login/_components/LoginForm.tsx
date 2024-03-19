@@ -39,7 +39,6 @@ const formSchema = z.object({
 });
 
 const LoginForm = () => {
-    const router = useRouter();
     const dispatch = useAppDispatch();
     const auth = useAuth();
 

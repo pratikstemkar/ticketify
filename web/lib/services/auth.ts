@@ -6,6 +6,7 @@ import { API_BASE_URL } from "@/constants";
 export interface UserResponse {
     user: User;
     access_token: string;
+    refresh_token: string;
 }
 
 export interface LoginRequest {
