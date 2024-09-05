@@ -17,5 +17,5 @@ Ticket Booking application with users and vendors. Payment gateway integration a
 ## Tasks
 - [ ] Project Setup
 - [ ] MySQL Docker Setup
-- [ ] NextJS Project Setup
+- [x] NextJS Project Setup
 - [ ] shadcn/ui setup
