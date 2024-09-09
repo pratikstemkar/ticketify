@@ -2,20 +2,30 @@ import Link from "next/link";
 
 const Footer = () => {
     return (
-        <footer className="flex px-20 py-5 text-muted-foreground text-sm">
-            <span className="hidden lg:block">
-                Ticketify &copy; {new Date().getFullYear()} |
-            </span>
-            <span className="lg:ml-1.5">
-                Code available on{" "}
+        <footer className="flex px-20 py-5 text-muted-foreground text-sm justify-between">
+            <div className="flex">
+                <span className="hidden lg:block">
+                    Ticketify &copy; {new Date().getFullYear()} |
+                </span>
+                <span className="lg:ml-1.5">
+                    Code available on{" "}
+                    <Link
+                        href="https://github.com/pratikstemkar/ticketify"
+                        target="_blank"
+                        className="underline underline-offset-4"
+                    >
+                        GitHub
+                    </Link>
+                    .
+                </span>
+            </div>
+            <span>
                 <Link
-                    href="https://github.com/pratikstemkar/ticketify"
-                    target="_blank"
+                    href="/about"
                     className="underline underline-offset-4"
                 >
-                    GitHub
+                    About
                 </Link>
-                .
             </span>
         </footer>
     );
