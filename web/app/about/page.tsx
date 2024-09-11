@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "About",
+    description: "Ticket Booking Made Easy!",
+};
+
 const AboutPage = () => {
     return (
         <main className="flex max-w-7xl m-auto">

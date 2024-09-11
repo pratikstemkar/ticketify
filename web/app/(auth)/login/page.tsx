@@ -1,4 +1,10 @@
 import LoginForm from "../_components/LoginForm";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Login",
+    description: "Ticket Booking Made Easy!",
+};
 
 const LoginPage = () => {
     return (

@@ -17,8 +17,11 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-    title: "Ticketify - Ticket Booking Made Easy",
-    description: "Ticket Booking Made Easy",
+    title: {
+        template: "%s - Ticketify",
+        default: "Ticketify - Ticket Booking Made Easy",
+    },
+    description: "Ticket Booking Made Easy!",
 };
 
 export default function RootLayout({
