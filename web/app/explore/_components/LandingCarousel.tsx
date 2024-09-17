@@ -12,13 +12,13 @@ import {
 } from "@/components/ui/carousel";
 
 export function LandingCarousel() {
-    const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
+    const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: false }));
     return (
         <Carousel
             className="w-full"
             plugins={[plugin.current]}
-            onMouseEnter={plugin.current.stop}
-            onMouseLeave={plugin.current.reset}
+            // onMouseEnter={plugin.current.stop}
+            // onMouseLeave={plugin.current.reset}
         >
             <CarouselContent>
                 {Array.from({ length: 5 }).map((_, index) => (

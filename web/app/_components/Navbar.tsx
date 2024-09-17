@@ -3,6 +3,7 @@ import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { LogInIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { APP_NAME } from "@/constants";
 
 const Navbar = () => {
     return (
@@ -16,7 +17,7 @@ const Navbar = () => {
                         height={40}
                     />
                     <h1 className="text-3xl font-extrabold tracking-tighter transition duration-300 ease-in-out group-hover:text-primary">
-                        Ticketify
+                        {APP_NAME}
                     </h1>
                 </div>
             </Link>

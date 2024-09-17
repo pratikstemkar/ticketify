@@ -24,7 +24,7 @@ const formSchema = z.object({
             message: "Email must have atleast 10 characters.",
         })
         .max(50, {
-            message: "Email must have atmax 50 characters.",
+            message: "Email must have at max 50 characters.",
         })
         .email({
             message: "Enter a valid email address.",
@@ -35,7 +35,7 @@ const formSchema = z.object({
             message: "Password must have atleast 6 characters.",
         })
         .max(16, {
-            message: "Password must have atmax 16 characters.",
+            message: "Password must have at max 16 characters.",
         }),
 });
 

@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import { toast } from "sonner";
 
 const formSchema = z.object({
     email: z
@@ -50,6 +51,7 @@ const LoginForm = () => {
 
     function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values);
+        toast("LOGIN Attempted!");
     }
 
     return (
