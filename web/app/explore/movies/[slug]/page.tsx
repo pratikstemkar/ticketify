@@ -54,13 +54,36 @@ const MovieDetail = ({ params }: { params: { slug: string } }) => {
                         <div className="">{foundMovie.desc}</div>
                         <div className="flex space-x-2">
                             {foundMovie?.tags?.map((tag, index) => (
-                                <Badge key={index}>{tag}</Badge>
+                                <Badge
+                                    key={index}
+                                    className="hover:cursor-pointer"
+                                >
+                                    {tag}
+                                </Badge>
                             ))}
                         </div>
-                        <div className="flex space-x-2">
-                            <span>{foundMovie.time}</span>
-                            <span>&#x2022;</span>
-                            <span>{foundMovie.rating}</span>
+                        <div>
+                            <div className="flex space-x-2">
+                                <span>{foundMovie.time}</span>
+                                <span>&#x2022;</span>
+                                <span>{foundMovie.rating}</span>
+                            </div>
+                            <div className="flex space-x-2">
+                                {foundMovie?.languages?.map((lang, index) => (
+                                    <div
+                                        className="flex space-x-2"
+                                        key={index}
+                                    >
+                                        <span className="hover:underline hover:underline-offset-4 hover:cursor-pointer">
+                                            {lang}
+                                        </span>
+                                        {index !=
+                                        foundMovie?.languages.length - 1 ? (
+                                            <span>&#x2022;</span>
+                                        ) : null}
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                         <Button size="lg">
                             <span>Book Tickets</span>

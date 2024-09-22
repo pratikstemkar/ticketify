@@ -2,7 +2,6 @@
 
 import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
-import { Card, CardContent } from "@/components/ui/card";
 import {
     Carousel,
     CarouselContent,
@@ -10,6 +9,7 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel";
+import Image from "next/image";
 
 export function LandingCarousel() {
     const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: false }));
@@ -21,19 +21,50 @@ export function LandingCarousel() {
             // onMouseLeave={plugin.current.reset}
         >
             <CarouselContent>
-                {Array.from({ length: 5 }).map((_, index) => (
-                    <CarouselItem key={index}>
-                        <div className="p-1">
-                            <Card>
-                                <CardContent className="flex aspect-auto items-center justify-center p-6 my-20">
-                                    <span className="text-4xl font-semibold">
-                                        {index + 1}
-                                    </span>
-                                </CardContent>
-                            </Card>
-                        </div>
-                    </CarouselItem>
-                ))}
+                <CarouselItem>
+                    <div className="p-1">
+                        <Image
+                            src="/carousels/500-days-of-summer.webp"
+                            alt="ha"
+                            width={1920}
+                            height={480}
+                            className="rounded-lg hover:cursor-pointer"
+                        />
+                    </div>
+                </CarouselItem>
+                <CarouselItem>
+                    <div className="p-1">
+                        <Image
+                            src="/carousels/parasite.webp"
+                            alt="ha"
+                            width={1920}
+                            height={480}
+                            className="rounded-lg hover:cursor-pointer"
+                        />
+                    </div>
+                </CarouselItem>
+                <CarouselItem>
+                    <div className="p-1">
+                        <Image
+                            src="/carousels/oppenheimer.webp"
+                            alt="ha"
+                            width={1920}
+                            height={480}
+                            className="rounded-lg hover:cursor-pointer"
+                        />
+                    </div>
+                </CarouselItem>
+                <CarouselItem>
+                    <div className="p-1">
+                        <Image
+                            src="/carousels/past-lives.webp"
+                            alt="ha"
+                            width={1920}
+                            height={480}
+                            className="rounded-lg hover:cursor-pointer"
+                        />
+                    </div>
+                </CarouselItem>
             </CarouselContent>
             <CarouselPrevious />
             <CarouselNext />
