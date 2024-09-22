@@ -9,10 +9,19 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel";
-import Image from "next/image";
+import CarouselCard from "./CarouselCard";
+import { findMovieByUrl, getRandomCarousels } from "@/lib/utils";
+import { carousels } from "@/data/carousels";
+import { movies } from "@/data/movies";
+import Link from "next/link";
 
 export function LandingCarousel() {
     const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: false }));
+    const randomUrls = getRandomCarousels(carousels, 5);
+
+    const foundMovies = randomUrls
+        .map(url => findMovieByUrl(movies, url))
+        .filter(movie => movie !== undefined);
     return (
         <Carousel
             className="w-full"
@@ -21,50 +30,16 @@ export function LandingCarousel() {
             // onMouseLeave={plugin.current.reset}
         >
             <CarouselContent>
-                <CarouselItem>
-                    <div className="p-1">
-                        <Image
-                            src="/carousels/500-days-of-summer.webp"
-                            alt="ha"
-                            width={1920}
-                            height={480}
-                            className="rounded-lg hover:cursor-pointer"
-                        />
-                    </div>
-                </CarouselItem>
-                <CarouselItem>
-                    <div className="p-1">
-                        <Image
-                            src="/carousels/parasite.webp"
-                            alt="ha"
-                            width={1920}
-                            height={480}
-                            className="rounded-lg hover:cursor-pointer"
-                        />
-                    </div>
-                </CarouselItem>
-                <CarouselItem>
-                    <div className="p-1">
-                        <Image
-                            src="/carousels/oppenheimer.webp"
-                            alt="ha"
-                            width={1920}
-                            height={480}
-                            className="rounded-lg hover:cursor-pointer"
-                        />
-                    </div>
-                </CarouselItem>
-                <CarouselItem>
-                    <div className="p-1">
-                        <Image
-                            src="/carousels/past-lives.webp"
-                            alt="ha"
-                            width={1920}
-                            height={480}
-                            className="rounded-lg hover:cursor-pointer"
-                        />
-                    </div>
-                </CarouselItem>
+                {foundMovies?.map((movie, index) => (
+                    <CarouselItem key={index}>
+                        <Link href={`/explore/movies/${movie.url}`}>
+                            <CarouselCard
+                                title={movie.title}
+                                img={movie.img}
+                            />
+                        </Link>
+                    </CarouselItem>
+                ))}
             </CarouselContent>
             <CarouselPrevious />
             <CarouselNext />

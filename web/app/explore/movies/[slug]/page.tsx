@@ -104,7 +104,7 @@ const MovieDetail = ({ params }: { params: { slug: string } }) => {
                         {foundMovie?.actors.map((actor, index) => (
                             <div
                                 key={index}
-                                className="flex flex-col space-y-2 items-center justify-center"
+                                className="flex flex-col space-y-2 items-center justify-center hover:cursor-pointer"
                             >
                                 <div>
                                     <Image
@@ -132,7 +132,7 @@ const MovieDetail = ({ params }: { params: { slug: string } }) => {
                         {foundMovie?.actors.map((actor, index) => (
                             <div
                                 key={index}
-                                className="flex flex-col space-y-2 items-center justify-center"
+                                className="flex flex-col space-y-2 items-center justify-center hover:cursor-pointer"
                             >
                                 <div>
                                     <Image
