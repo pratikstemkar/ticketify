@@ -14,7 +14,7 @@ export const movies = [
     {
         title: "Casino Royale",
         img: "casinoroyale.webp",
-        desc: "hehhehe",
+        desc: "Casino Royale is a 2006 spy action thriller film, the twenty-first in the Eon Productions James Bond series, and the third screen adaptation of Ian Fleming's 1953 novel of the same name. Directed by Martin Campbell from a screenplay by Neil Purvis, Robert Wade, and Paul Haggis, it stars Daniel Craig in his first appearance as Bond, alongside Eva Green, Mads Mikkelsen, Judi Dench, and Jeffrey Wright. In the film, Bond is on a mission to bankrupt terrorism financier Le Chiffre (Mikkelsen) in a high-stakes poker game at the Casino Royale in Montenegro. ",
         url: "casino-royale",
         actors: ["Actor 1", "Actor 2"],
         director: "Director 1",
@@ -98,7 +98,7 @@ export const movies = [
     {
         title: "Jojo Rabbit",
         img: "jojorabbit.webp",
-        desc: "hehhehe",
+        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec elementum nunc non diam efficitur sodales. Etiam pretium consectetur mi, laoreet posuere massa convallis ac. Nulla porta porttitor ornare. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi finibus lacus a ultricies convallis. Pellentesque ullamcorper, ligula nec congue aliquet, eros elit suscipit tellus, nec rutrum nisl leo at augue. Nullam semper elit vitae bibendum cursus. ",
         url: "jojo-rabbit",
         actors: ["Actor 1", "Actor 2"],
         director: "Director 1",
