@@ -13,7 +13,7 @@ const RegisterPage = () => {
                 <RegisterForm />
             </div>
             <div className="w-2/3 justify-end">
-                <div className="bg-red-500">Register Page</div>
+                {/* <div className="">Register Page</div> */}
             </div>
         </main>
     );
