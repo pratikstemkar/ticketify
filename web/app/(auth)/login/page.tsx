@@ -8,9 +8,9 @@ export const metadata: Metadata = {
 
 const LoginPage = () => {
     return (
-        <main className="flex m-auto max-w-7xl justify-between items-center mt-28">
-            <div className="w-2/3">Login Page</div>
-            <div className="flex items-center justify-end w-1/3">
+        <main className="flex m-auto max-w-7xl justify-between items-center mt-28 px-5 lg:px-0">
+            <div className="lg:w-2/3 hidden lg:block">Login Page</div>
+            <div className="flex items-center justify-end w-full lg:w-1/3">
                 <LoginForm />
             </div>
         </main>

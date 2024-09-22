@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const MovieCard = (props: { title: string; img: string }) => {
     return (
-        <div className="relative aspect-[2/3] h-90 w-60 hover:cursor-pointer">
+        <div className="relative aspect-[2/3] h-70 w-50 lg:h-90 lg:w-60 hover:cursor-pointer">
             <Image
                 src={`/posters/${props.img}`}
                 alt={props.title}

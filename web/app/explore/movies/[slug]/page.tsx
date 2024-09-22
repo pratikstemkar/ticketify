@@ -1,4 +1,8 @@
-import { findMovieBySlug } from "@/lib/utils";
+import {
+    convertToList,
+    convertToLowercaseHyphen,
+    findMovieBySlug,
+} from "@/lib/utils";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import MovieCard from "../../_components/MovieCard";
@@ -108,7 +112,9 @@ const MovieDetail = ({ params }: { params: { slug: string } }) => {
                             >
                                 <div>
                                     <Image
-                                        src="https://github.com/pratikstemkar.png"
+                                        src={`/casts/${convertToLowercaseHyphen(
+                                            actor
+                                        )}.webp`}
                                         alt={actor}
                                         width={100}
                                         height={100}
@@ -129,28 +135,30 @@ const MovieDetail = ({ params }: { params: { slug: string } }) => {
                 <div>
                     <h4 className="font-bold text-2xl">Crew</h4>
                     <div className="flex space-x-5 mt-2">
-                        {foundMovie?.actors.map((actor, index) => (
-                            <div
-                                key={index}
-                                className="flex flex-col space-y-2 items-center justify-center hover:cursor-pointer"
-                            >
-                                <div>
-                                    <Image
-                                        src="https://github.com/pratikstemkar.png"
-                                        alt={actor}
-                                        width={100}
-                                        height={100}
-                                        className="rounded-full"
-                                    />
-                                </div>
-                                <div className="flex flex-col space-y-1 items-center justify-center">
-                                    <div>{actor}</div>
-                                    <div className="text-muted-foreground text-sm">
-                                        {actor}
+                        {convertToList(foundMovie?.director).map(
+                            (actor, index) => (
+                                <div
+                                    key={index}
+                                    className="flex flex-col space-y-2 items-center justify-center hover:cursor-pointer"
+                                >
+                                    <div>
+                                        <Image
+                                            src="https://github.com/pratikstemkar.png"
+                                            alt={actor}
+                                            width={100}
+                                            height={100}
+                                            className="rounded-full"
+                                        />
+                                    </div>
+                                    <div className="flex flex-col space-y-1 items-center justify-center">
+                                        <div>{actor}</div>
+                                        <div className="text-muted-foreground text-sm">
+                                            <span>Director</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
+                            )
+                        )}
                     </div>
                 </div>
                 <hr />

@@ -45,3 +45,14 @@ export function getRandomCarousels(
 
     return shuffled.slice(0, count);
 }
+
+export function convertToLowercaseHyphen(str: string) {
+    return str
+        .toLowerCase()
+        .replace(/[^\w\s]/g, "") // Remove all non-alphanumeric characters except spaces
+        .replace(/\s+/g, "-");
+}
+
+export function convertToList(str: string) {
+    return str.split(",").map(item => item.trim());
+}
