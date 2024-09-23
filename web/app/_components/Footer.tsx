@@ -2,12 +2,12 @@ import Link from "next/link";
 
 const Footer = () => {
     return (
-        <footer className="flex px-20 py-5 text-muted-foreground text-sm justify-between">
+        <footer className="flex px-5 lg:px-20 py-5 text-muted-foreground text-sm justify-between">
             <div className="flex">
-                <span className="hidden lg:block">
+                <span className="">
                     Ticketify &copy; {new Date().getFullYear()} |
                 </span>
-                <span className="lg:ml-1.5">
+                <span className="ml-1.5">
                     Code available on{" "}
                     <Link
                         href="https://github.com/pratikstemkar/ticketify"

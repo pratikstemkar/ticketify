@@ -23,6 +23,7 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
+import Link from "next/link";
 
 export async function generateMetadata({
     params,
@@ -43,65 +44,67 @@ const MovieDetail = ({ params }: { params: { slug: string } }) => {
 
     return (
         <main className="flex-col space-y-10 max-w-7xl m-auto">
-            <div className="flex space-x-5 mt-5">
-                <div>
+            <div className="flex lg:flex-row flex-col space-y-5 lg:space-y-0 space-x-0 lg:space-x-5 px-2 lg:px-0 mt-5">
+                <div className="flex justify-center">
                     <MovieCard
                         title={foundMovie.title}
                         img={foundMovie.img}
                     />
                 </div>
-                <div className="flex w-full justify-between">
-                    <div className="flex-col space-y-5">
+                <div className="flex-col space-y-5">
+                    <div className="flex justify-between">
                         <h2 className="font-extrabold text-4xl tracking-tighter">
                             {foundMovie.title}
                         </h2>
-                        <div className="">{foundMovie.desc}</div>
-                        <div className="flex space-x-2">
-                            {foundMovie?.tags?.map((tag, index) => (
-                                <Badge
-                                    key={index}
-                                    className="hover:cursor-pointer"
-                                >
-                                    {tag}
-                                </Badge>
-                            ))}
-                        </div>
-                        <div>
-                            <div className="flex space-x-2">
-                                <span>{foundMovie.time}</span>
-                                <span>&#x2022;</span>
-                                <span>{foundMovie.rating}</span>
-                            </div>
-                            <div className="flex space-x-2">
-                                {foundMovie?.languages?.map((lang, index) => (
-                                    <div
-                                        className="flex space-x-2"
-                                        key={index}
-                                    >
-                                        <span className="hover:underline hover:underline-offset-4 hover:cursor-pointer">
-                                            {lang}
-                                        </span>
-                                        {index !=
-                                        foundMovie?.languages.length - 1 ? (
-                                            <span>&#x2022;</span>
-                                        ) : null}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                        <Button size="lg">
-                            <span>Book Tickets</span>
-                        </Button>
-                    </div>
-                    <div>
                         <Button variant="outline">
                             <Share2Icon className="h-4 w-4 mr-2" />
                             <span>Share</span>
                         </Button>
                     </div>
+                    <div className="">{foundMovie.desc}</div>
+                    <div className="flex space-x-2">
+                        {foundMovie?.tags?.map((tag, index) => (
+                            <Badge
+                                key={index}
+                                className="hover:cursor-pointer"
+                            >
+                                {tag}
+                            </Badge>
+                        ))}
+                    </div>
+                    <div>
+                        <div className="flex space-x-2">
+                            <span>{foundMovie.time}</span>
+                            <span>&#x2022;</span>
+                            <span>{foundMovie.rating}</span>
+                        </div>
+                        <div className="flex space-x-2">
+                            {foundMovie?.languages?.map((lang, index) => (
+                                <div
+                                    className="flex space-x-2"
+                                    key={index}
+                                >
+                                    <span className="hover:underline hover:underline-offset-4 hover:cursor-pointer">
+                                        {lang}
+                                    </span>
+                                    {index !=
+                                    foundMovie?.languages.length - 1 ? (
+                                        <span>&#x2022;</span>
+                                    ) : null}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <div>
+                        <Link href={`/explore/movies/${params.slug}/book`}>
+                            <Button size="lg">
+                                <span>Book Tickets</span>
+                            </Button>
+                        </Link>
+                    </div>
                 </div>
             </div>
-            <div className="flex-col space-x-2 space-y-10 max-w-5xl">
+            <div className="flex-col px-2 lg:px-0 space-y-10 max-w-5xl">
                 <div>
                     <h4 className="font-bold text-2xl">Cast</h4>
                     <div className="flex space-x-5 mt-2">
@@ -164,7 +167,7 @@ const MovieDetail = ({ params }: { params: { slug: string } }) => {
                 <hr />
                 <div className="flex-col space-y-5">
                     <h4 className="font-bold text-2xl">Reviews</h4>
-                    <div className="flex space-x-5">
+                    <div className="flex flex-col lg:flex-row space-y-2 space-x-0 lg:space-x-5 lg:space-y-0">
                         <Card>
                             <CardHeader>
                                 <CardTitle className="flex justify-between items-center">
