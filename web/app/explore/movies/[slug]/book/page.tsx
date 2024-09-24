@@ -18,6 +18,7 @@ import { findMovieBySlug } from "@/lib/utils";
 import { Share2Icon } from "lucide-react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import PaymentDialog from "../_components/PaymentDialog";
 
 export async function generateMetadata({
     params,
@@ -316,7 +317,7 @@ const BookPage = ({ params }: { params: { slug: string } }) => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="text-md text-black">
+                                        <div className="text-md text-black dark:text-white">
                                             <div>
                                                 <span className="font-semibold">
                                                     Ticket Price:{" "}
@@ -339,7 +340,7 @@ const BookPage = ({ params }: { params: { slug: string } }) => {
                                     </CardDescription>
                                 </CardContent>
                             </Card>
-                            <Button>Confirm Booking</Button>
+                            <PaymentDialog />
                         </div>
                     </div>
                 </div>
