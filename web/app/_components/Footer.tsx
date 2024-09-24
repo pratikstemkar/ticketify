@@ -1,3 +1,4 @@
+import { APP_NAME } from "@/constants";
 import Link from "next/link";
 
 const Footer = () => {
@@ -5,7 +6,7 @@ const Footer = () => {
         <footer className="flex px-5 lg:px-20 py-5 text-muted-foreground text-sm justify-between">
             <div className="flex">
                 <span className="">
-                    Ticketify &copy; {new Date().getFullYear()} |
+                    {APP_NAME} &copy; {new Date().getFullYear()} |
                 </span>
                 <span className="ml-1.5">
                     Code available on{" "}
