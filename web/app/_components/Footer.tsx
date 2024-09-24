@@ -20,14 +20,16 @@ const Footer = () => {
                     .
                 </span>
             </div>
-            <span>
-                <Link
-                    href="/about"
-                    className="underline underline-offset-4"
-                >
-                    About
-                </Link>
-            </span>
+            <div className="hidden lg:block">
+                <span>
+                    <Link
+                        href="/about"
+                        className="underline underline-offset-4"
+                    >
+                        About
+                    </Link>
+                </span>
+            </div>
         </footer>
     );
 };
