@@ -10,7 +10,7 @@ import { Movie } from "@/lib/utils";
 
 const BookingDetail = (props: { movie: Movie }) => {
     return (
-        <div>
+        <div className="flex flex-col w-full space-y-2">
             <Card>
                 <CardHeader>
                     <CardTitle>Booking Details</CardTitle>
