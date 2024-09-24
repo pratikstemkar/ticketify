@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import MovieList from "../_components/MovieList";
+import Loading from "@/app/loading";
 
 const MoviesPage = () => {
     return (
@@ -8,7 +9,7 @@ const MoviesPage = () => {
                 <h1 className="font-extrabold text-4xl tracking-tighter">
                     Movies
                 </h1>
-                <Suspense fallback={<>Loading...</>}>
+                <Suspense fallback={<Loading />}>
                     <MovieList />
                 </Suspense>
             </div>
