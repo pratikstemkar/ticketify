@@ -7,13 +7,18 @@ import Footer from "./_components/Footer";
 import { Toaster } from "@/components/ui/sonner";
 import StoreProvider from "@/store/StoreProvider";
 
-const geistSans = localFont({
-    src: "./fonts/GeistVF.woff",
-    variable: "--font-geist-sans",
-    weight: "100 900",
-});
-const geistMono = localFont({
-    src: "./fonts/GeistMonoVF.woff",
+// const geistSans = localFont({
+//     src: "./fonts/GeistVF.woff",
+//     variable: "--font-geist-sans",
+//     weight: "100 900",
+// });
+// const geistMono = localFont({
+//     src: "./fonts/GeistMonoVF.woff",
+//     variable: "--font-geist-mono",
+//     weight: "100 900",
+// });
+const inter = localFont({
+    src: "./fonts/Inter.woff",
     variable: "--font-geist-mono",
     weight: "100 900",
 });
@@ -34,7 +39,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col justify-between min-h-screen`}
+                className={`${inter.variable} antialiased flex flex-col justify-between min-h-screen`}
             >
                 <StoreProvider>
                     <ThemeProvider
