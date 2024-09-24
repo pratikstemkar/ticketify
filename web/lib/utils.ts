@@ -11,7 +11,7 @@ export function findMovieBySlug(slug: string) {
     return foundMovie;
 }
 
-type Movie = {
+export type Movie = {
     title: string;
     img: string;
     desc: string;
