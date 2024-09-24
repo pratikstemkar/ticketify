@@ -8,6 +8,12 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { findMovieBySlug } from "@/lib/utils";
 import { Share2Icon } from "lucide-react";
 import { Metadata } from "next";
@@ -44,10 +50,20 @@ const BookPage = ({ params }: { params: { slug: string } }) => {
                         <h2 className="font-extrabold text-4xl tracking-tighter">
                             {foundMovie.title}
                         </h2>
-                        <Button variant="outline">
-                            <Share2Icon className="h-4 w-4 mr-2" />
-                            <span>Share</span>
-                        </Button>
+
+                        <TooltipProvider>
+                            <Tooltip>
+                                <TooltipTrigger asChild>
+                                    <Button variant="outline">
+                                        <Share2Icon className="h-4 w-4 mr-2" />
+                                        <span>Share</span>
+                                    </Button>
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                    <p>Share the movie</p>
+                                </TooltipContent>
+                            </Tooltip>
+                        </TooltipProvider>
                     </div>
                     <div className="">{foundMovie.desc}</div>
                     <div className="flex space-x-2">

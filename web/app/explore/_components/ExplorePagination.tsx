@@ -1,39 +1,71 @@
 import {
     Pagination,
     PaginationContent,
-    PaginationEllipsis,
+    // PaginationEllipsis,
     PaginationItem,
     PaginationLink,
     PaginationNext,
     PaginationPrevious,
 } from "@/components/ui/pagination";
 
-export function ExplorePagination() {
+export function ExplorePagination(props: { currentPage: number }) {
     return (
         <Pagination>
             <PaginationContent>
                 <PaginationItem>
-                    <PaginationPrevious href="#" />
+                    <PaginationPrevious
+                        href={
+                            props.currentPage > 1
+                                ? `/explore/movies?page=${
+                                      props.currentPage - 1
+                                  }`
+                                : `#`
+                        }
+                    />
                 </PaginationItem>
-                <PaginationItem>
-                    <PaginationLink href="#">1</PaginationLink>
-                </PaginationItem>
+                {props.currentPage > 1 ? (
+                    <PaginationItem>
+                        <PaginationLink
+                            href={`/explore/movies?page=${
+                                props.currentPage - 1
+                            }`}
+                        >
+                            {props.currentPage - 1}
+                        </PaginationLink>
+                    </PaginationItem>
+                ) : null}
                 <PaginationItem>
                     <PaginationLink
                         href="#"
                         isActive
                     >
-                        2
+                        {props.currentPage}
                     </PaginationLink>
                 </PaginationItem>
-                <PaginationItem>
-                    <PaginationLink href="#">3</PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
+                {props.currentPage < 11 ? (
+                    <PaginationItem>
+                        <PaginationLink
+                            href={`/explore/movies?page=${
+                                props.currentPage + 1
+                            }`}
+                        >
+                            {props.currentPage + 1}
+                        </PaginationLink>
+                    </PaginationItem>
+                ) : null}
+                {/* <PaginationItem>
                     <PaginationEllipsis />
-                </PaginationItem>
+                </PaginationItem> */}
                 <PaginationItem>
-                    <PaginationNext href="#" />
+                    <PaginationNext
+                        href={
+                            props.currentPage < 11
+                                ? `/explore/movies?page=${
+                                      props.currentPage + 1
+                                  }`
+                                : `#`
+                        }
+                    />
                 </PaginationItem>
             </PaginationContent>
         </Pagination>

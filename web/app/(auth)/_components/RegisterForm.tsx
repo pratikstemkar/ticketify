@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import { Checkbox } from "@/components/ui/checkbox";
 
 const formSchema = z
     .object({
@@ -180,6 +181,15 @@ const RegisterForm = () => {
                         </FormItem>
                     )}
                 />
+                <div className="flex items-center space-x-2">
+                    <Checkbox id="terms" />
+                    <label
+                        htmlFor="terms"
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 hover:cursor-pointer"
+                    >
+                        Accept terms and conditions
+                    </label>
+                </div>
                 <Button type="submit">Create Account</Button>
                 <span className="text-sm">
                     Already have an account?{" "}
