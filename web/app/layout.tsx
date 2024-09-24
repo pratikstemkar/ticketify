@@ -6,6 +6,13 @@ import Navbar from "./_components/Navbar";
 import Footer from "./_components/Footer";
 import { Toaster } from "@/components/ui/sonner";
 import StoreProvider from "@/store/StoreProvider";
+import { Inter } from "next/font/google";
+
+// If loading a variable font, you don't need to specify the font weight
+const inter = Inter({
+    subsets: ["latin"],
+    display: "swap",
+});
 
 // const geistSans = localFont({
 //     src: "./fonts/GeistVF.woff",
@@ -17,11 +24,11 @@ import StoreProvider from "@/store/StoreProvider";
 //     variable: "--font-geist-mono",
 //     weight: "100 900",
 // });
-const inter = localFont({
-    src: "./fonts/Inter.woff",
-    variable: "--font-geist-mono",
-    weight: "100 900",
-});
+// const inter = localFont({
+//     src: "./fonts/Inter.woff",
+//     variable: "--font-geist-mono",
+//     weight: "100 900",
+// });
 
 export const metadata: Metadata = {
     title: {
@@ -39,7 +46,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${inter.variable} antialiased flex flex-col justify-between min-h-screen`}
+                className={`${inter.className} antialiased flex flex-col justify-between min-h-screen`}
             >
                 <StoreProvider>
                     <ThemeProvider
