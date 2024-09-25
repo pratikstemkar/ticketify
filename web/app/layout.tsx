@@ -46,7 +46,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${inter.className} antialiased flex flex-col justify-between min-h-screen`}
+                className={`${inter.className} relative antialiased flex flex-col justify-between min-h-screen`}
             >
                 <StoreProvider>
                     <ThemeProvider

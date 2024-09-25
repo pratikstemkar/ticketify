@@ -10,8 +10,10 @@ const CarouselCard = (props: { title: string; img: string }) => {
                 width={1920}
                 height={480}
             />
-            <div className="absolute inset-y-0 px-10 flex items-center justify-center">
-                <h2 className="text-white text-4xl font-bold">{props.title}</h2>
+            <div className="absolute inset-y-0 px-5 lg:px-10 flex items-center justify-center">
+                <h2 className="text-white text-2xl lg:text-4xl font-bold">
+                    {props.title}
+                </h2>
             </div>
         </div>
     );

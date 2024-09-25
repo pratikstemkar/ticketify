@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export default function Home() {
     return (
-        <main className="flex-1 flex items-center justify-center p-4">
-            <div className="max-w-7xl w-full mt-10">
+        <main className="flex items-center justify-center px-2 lg:px-0 mt-10 lg:mt-10">
+            <div className="max-w-7xl w-full">
                 <div className="flex flex-col items-center text-center space-y-5 justify-center">
                     <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold tracking-tighter">
                         Ticketing Made Easy

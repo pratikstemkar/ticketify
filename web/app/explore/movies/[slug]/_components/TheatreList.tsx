@@ -24,7 +24,7 @@ const TheatreList = () => {
                                 <h4 className="text-md font-mono text-sm">
                                     {show.date}
                                 </h4>
-                                <div className="flex space-x-2">
+                                <div className="grid grid-cols-3 lg:grid-cols-4 gap-2">
                                     {show.times?.map((time, index) => (
                                         <Button
                                             key={index}
