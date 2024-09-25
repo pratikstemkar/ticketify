@@ -17,7 +17,7 @@ import Link from "next/link";
 
 export function LandingCarousel() {
     const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: false }));
-    const randomUrls = getRandomCarousels(carousels, 5);
+    const randomUrls = getRandomCarousels(carousels, 6);
 
     const foundMovies = randomUrls
         .map(url => findMovieByUrl(movies, url))
