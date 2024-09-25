@@ -4,6 +4,7 @@ import { LogInIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { APP_NAME } from "@/constants";
+import UserNav from "./UserNav";
 
 const Navbar = () => {
     return (
@@ -21,7 +22,8 @@ const Navbar = () => {
                     </h1>
                 </div>
             </Link>
-            <div className="inline-flex space-x-2">
+            <div className="inline-flex items-center space-x-2">
+                <UserNav />
                 <Button
                     variant="default"
                     asChild
