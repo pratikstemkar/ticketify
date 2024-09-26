@@ -17,6 +17,9 @@ import {
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { toast } from "sonner";
+import { useAppDispatch } from "@/store/hooks";
+import { setCredentials } from "@/store/features/auth/authSlice";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
     email: z
@@ -41,6 +44,9 @@ const formSchema = z.object({
 });
 
 const LoginForm = () => {
+    const dispatch = useAppDispatch();
+    const router = useRouter();
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -51,7 +57,21 @@ const LoginForm = () => {
 
     function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values);
+        dispatch(
+            setCredentials({
+                user: {
+                    firstName: "John",
+                    lastName: "Doe",
+                    email: "johndoe@gmail.com",
+                    role: "user",
+                    avatar: "https://github.com/pratikstemkar.png",
+                },
+                access_token: "asdasd",
+                refresh_token: "asdasd",
+            })
+        );
         toast("LOGIN Attempted!");
+        router.push("/explore");
     }
 
     return (

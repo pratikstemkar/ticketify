@@ -1,3 +1,5 @@
+"use client";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -8,8 +10,11 @@ import {
 } from "@/components/ui/tooltip";
 import { Edit2Icon } from "lucide-react";
 import ProfileTabs from "./_components/ProfileTabs";
+import { useAuth } from "@/store/hooks/useAuth";
 
 const ProfilePage = ({ params }: { params: { userId: string } }) => {
+    const auth = useAuth();
+
     return (
         <main className="w-full max-w-7xl m-auto px-2 lg:px-0 mt-5">
             <div className="flex-col space-y-5">
@@ -22,7 +27,9 @@ const ProfilePage = ({ params }: { params: { userId: string } }) => {
                         <div className="flex justify-between w-full">
                             <div className="flex-col">
                                 <h4 className="text-2xl lg:text-4xl font-bold">
-                                    John Doe
+                                    {auth.user?.firstName +
+                                        " " +
+                                        auth.user?.lastName}
                                 </h4>
 
                                 <TooltipProvider>

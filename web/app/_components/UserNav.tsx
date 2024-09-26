@@ -11,6 +11,9 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { logout } from "@/store/features/auth/authSlice";
+import { useAppDispatch } from "@/store/hooks";
+import { useAuth } from "@/store/hooks/useAuth";
 import {
     CreditCardIcon,
     LogOutIcon,
@@ -22,6 +25,8 @@ import { useRouter } from "next/navigation";
 
 const UserNav = () => {
     const router = useRouter();
+    const auth = useAuth();
+    const dispatch = useAppDispatch();
 
     return (
         <DropdownMenu>
@@ -32,8 +37,8 @@ const UserNav = () => {
                 >
                     <Avatar className="h-9 w-9">
                         <AvatarImage
-                            src={"https://github.com/pratikstemkar.png"}
-                            alt={`johndoe@gmail.com`}
+                            src={auth.user?.avatar}
+                            alt={auth.user?.email}
                         />
                         <AvatarFallback>SC</AvatarFallback>
                     </Avatar>
@@ -47,10 +52,10 @@ const UserNav = () => {
                 <DropdownMenuLabel className="font-normal">
                     <div className="flex flex-col space-y-1">
                         <p className="text-sm font-medium leading-none">
-                            {"John" + " " + "Doe"}
+                            {auth.user?.firstName + " " + auth.user?.lastName}
                         </p>
                         <p className="text-xs leading-none text-muted-foreground">
-                            johndoe@gmail.com
+                            {auth.user?.email}
                         </p>
                     </div>
                 </DropdownMenuLabel>
@@ -79,7 +84,12 @@ const UserNav = () => {
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem className="hover:cursor-pointer text-red-500 group">
+                <DropdownMenuItem
+                    className="hover:cursor-pointer text-red-500 group"
+                    onClick={() => {
+                        dispatch(logout());
+                    }}
+                >
                     <LogOutIcon className="mr-2 w-4 h-4 group-hover:text-muted-foreground" />
                     <span>Log out</span>
                 </DropdownMenuItem>
