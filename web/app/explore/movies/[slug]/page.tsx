@@ -51,7 +51,7 @@ const MovieDetail = ({ params }: { params: { slug: string } }) => {
     return (
         <main className="flex-col space-y-10 max-w-7xl m-auto">
             <div className="flex lg:flex-row flex-col space-y-5 lg:space-y-0 space-x-0 lg:space-x-5 px-2 lg:px-0 mt-5">
-                <div className="">
+                <div className="relative h-90 w-60 m-auto">
                     <MovieCard
                         title={foundMovie.title}
                         img={foundMovie.img}
