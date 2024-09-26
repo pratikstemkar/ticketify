@@ -14,7 +14,7 @@ const MovieList = () => {
 
     return (
         <div className="flex-col items-center space-y-5">
-            <div className="grid grid-cols-2 lg:grid-cols-5 gap-5">
+            <div className="grid grid-cols-2 lg:grid-cols-5 gap-2 lg:gap-5">
                 {paginate(movies, page, 10)?.map((movie, index) => (
                     <Link
                         href={`/explore/movies/${movie.url}`}

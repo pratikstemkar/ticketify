@@ -7,7 +7,7 @@ import { ChevronRightIcon } from "lucide-react";
 
 const ExplorePage = () => {
     return (
-        <main className="flex flex-col max-w-7xl m-auto space-y-5 px-2 lg:px-0">
+        <main className="flex flex-col max-w-7xl m-auto space-y-5 px-2 lg:px-0 mt-5">
             <LandingCarousel />
             <div>
                 <div className="flex items-center justify-between">
@@ -20,8 +20,8 @@ const ExplorePage = () => {
                         <ChevronRightIcon className="h-4 w-4 ml-1 group-hover:translate-x-2 transition ease-in-out duration-300" />
                     </Link>
                 </div>
-                <div className="grid grid-cols-2 lg:grid-cols-5 gap-5">
-                    {getRandomMovies(movies)?.map((movie, index) => (
+                <div className="grid grid-cols-2 lg:grid-cols-5 gap-2 lg:gap-5">
+                    {getRandomMovies(movies, 5)?.map((movie, index) => (
                         <Link
                             href={`/explore/movies/${movie.url}`}
                             key={index}
